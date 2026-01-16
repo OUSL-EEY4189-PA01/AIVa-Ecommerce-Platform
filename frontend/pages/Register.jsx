@@ -137,21 +137,12 @@ const Register = () => {
             className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
           />
 
-          <input
-            type="text"
-            name="street"
-            placeholder="Street/Lane"
-            value={address.street}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
           <select class="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black">
             <option>Sri Lanka</option>
           </select>
 
           <input
-            type="number"
+            type="tel"
             name="contactno"
             placeholder="Contact Number"
             value={contactno}

@@ -1,7 +1,35 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
   const { user } = useAuth();
+
+  {trendingProducts.map((product) => (
+    <Link
+      key={product.id}
+      to={`/product/${product.id}`}
+      className="relative group overflow-hidden rounded-xl shadow-lg bg-white"
+    >
+      <img
+        src={productimage}
+        alt={product.name}
+        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+
+        <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full">
+              🔥 Trending
+        </span>
+
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">{product.name}</h3>
+          <p className="text-purple-600 font-bold">{product.price}</p>
+          <p className="text-sm text-gray-500">{product.sales} + sold</p>
+        </div>
+
+
+      </Link>
+
+  ))}
 
   const brands = [
     {name: "Ordinary", image: "https://imgur.com/xwRZLi1.jpg", link:"/"},
