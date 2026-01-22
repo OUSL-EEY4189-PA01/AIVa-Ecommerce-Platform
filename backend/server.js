@@ -4,8 +4,9 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import path from 'path';
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
 
 app.get('/', (req, res) => {
