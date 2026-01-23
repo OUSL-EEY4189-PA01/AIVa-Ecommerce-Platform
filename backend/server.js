@@ -5,6 +5,7 @@ import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 import connectDB from './config/db.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -30,7 +31,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
-
+app.use('/api/payment', paymentRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');
