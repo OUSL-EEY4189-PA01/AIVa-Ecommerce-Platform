@@ -4,37 +4,15 @@ import axios from "axios";
 
 const Register = () => {
   const [name, setName] = useState('');
-  const [birthdate, setBirthdate] = useState('');
   const [email, setEmail] = useState('');
-  const [address, setAddress] = useState({
-    houseNo: "", 
-    street: "",
-    city: "",
-    district: "",
-    postalcode: "",
-    country: ""
-  });
-
-  const handleAddressChange= (e) => {
-    const { name, value } = e.target;
-    setAddress({ ...address, [name]: value });
-  };
-
-  const [contactno, setContactno] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmpassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmpassword) {
-      alert("Passwords do not match!");
-      return;
-    }
     setError('');
     setSuccess('');
     setLoading(true);
@@ -65,23 +43,12 @@ const Register = () => {
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
             required
           />
-
-          <input
-            type="date"
-            name="birthdate"
-            placeholder="Birth Date"
-            value={birthdate}
-            onChange={ (e) => setBirthdate(e.target.value)}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required
-          />
-
           <input
             type="email"
             name="email"
@@ -91,6 +58,7 @@ const Register = () => {
             className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
             required
           />
+<<<<<<< HEAD
 
           <input
             type="text" 
@@ -151,22 +119,14 @@ const Register = () => {
             required         
           />
 
+=======
+>>>>>>> 706e79c705e5c686a1ac74f88ad6943550a42a0b
           <input
             type="password"
             name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-6 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required
-          />
-
-          <input
-            type="password"
-            name="confirmpassword"
-            placeholder="Confirm Password"
-            value={confirmpassword}
-            onChange={(e) => setConfirmpassword(e.target.value)}
             className="w-full mb-6 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
             required
           />
