@@ -9,8 +9,12 @@ const Navbar = () => {
   return (
     <nav className="bg-lime-900 fixed top-0 left-0 w-full z-50 h-20 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
-        <Link to="/" className="text-white font-extrabold text-2xl cursor-pointer">
-          AIVa
+        <Link to="/" className="cursor-pointer">
+          <img
+            src="https://imgur.com/IOdaMXU.jpg"
+            alt="AIVa logo"
+            className="h-12 w-auto"
+          />
         </Link>
 
         <div className="hidden md:flex space-x-12 text-white font-medium ml-20 font-(family-name:--my-font) ...">
