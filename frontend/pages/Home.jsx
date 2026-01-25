@@ -4,32 +4,47 @@ import { useAuth } from "../context/AuthContext";
 const Home = () => {
   const { user } = useAuth();
 
-  {trendingProducts.map((product) => (
-    <Link
-      key={product.id}
-      to={`/product/${product.id}`}
-      className="relative group overflow-hidden rounded-xl shadow-lg bg-white"
-    >
-      <img
-        src={productimage}
-        alt={product.name}
-        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+  const products = [
+    {
+      id: "p1",
+      name: "CeraVe Daily Moisturizing Lotion",
+      image: "https://imgur.com/T4BOVTY.jpg",
+      price: 4500,
+      sales: 320
+    },
+    {
+      id: "p2",
+      name: "The Ordinary Glycolic Acid 7% Exfoliating Toner 100ml",
+      image: "https://imgur.com/BO65rt2.jpg",
+      price: 3800,
+      sales: 540
+    },
+    {
+      id: "p3",
+      name: "Anua's Niacinamide 10% + TXA 4% Dark Spot Corrector Serum",
+      image: "https://imgur.com/KUODiAX.jpg",
+      price: 4500,
+      sales: 320
+    },
+    {
+      id: "p4",
+      name: "SKIN1004 Madagascar Centella Toning Toner 210ml",
+      image: "https://imgur.com/mvBYy1A.jpg",
+      price: 3800,
+      sales: 540
+    },
+    {
+      id: "p5",
+      name: "Simple Water Boost Micellar Gel Facial Wash [150ml]",
+      image: "https://imgur.com/vbB6CUh.jpg",
+      price: 4500,
+      sales: 320
+    }
+  ]
 
-        <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full">
-              🔥 Trending
-        </span>
-
-        <div className="p-4">
-          <h3 className="text-lg font-semibold">{product.name}</h3>
-          <p className="text-purple-600 font-bold">{product.price}</p>
-          <p className="text-sm text-gray-500">{product.sales} + sold</p>
-        </div>
-
-
-      </Link>
-
-  ))}
+  const trendingProducts = [...products]
+    .sort((a,b) => b.sales - a.sales)
+    .slice(0,5);
 
   const brands = [
     {name: "Ordinary", image: "https://imgur.com/xwRZLi1.jpg", link:"/"},
@@ -106,24 +121,56 @@ return (
           <h2 className="text-5xl mb-12 font-semibold font-(family-name:--my-font) ...">
             Trending Products
           </h2>
+
+          
+    <div className="grid gap-8 
+                    grid-cols-2 
+                    sm:grid-cols-3 
+                    md:grid-cols-4 
+                    lg:grid-cols-5">
+     {trendingProducts.map((product) => (
+    <Link
+      key={product.id}
+      className="relative group overflow-hidden rounded-xl shadow-lg bg-white"
+    >
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+
+        <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full">
+              🔥 Trending
+        </span>
+
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">{product.name}</h3>
+          <p className="text-purple-600 font-bold">{product.price}</p>
+          <p className="text-sm text-gray-500">{product.sales} + sold</p>
+        </div>
+    </Link>
+
+  ))}
+
+    </div>
         </div>
     </section>
 
-    <section className="h-screen bg-stone-200">
-      <div className="text-left max-w-3xl pt-10 p-10">
+    {/* <section className="h-screen bg-stone-200">
+      <div className="flex h-full">
+        <div className="w-1/2 bg-white flex items-center justify-center">
           <h2 className="text-5xl mb-6 font-semibold font-(family-name:--my-font) ...">
-            Promo Banners
+            Discount
           </h2>
-        </div>
-    </section>
+          </div>
 
-    <section className="h-screen bg-stone-400">
-      <div className="text-left max-w-3xl pt-10 p-10">
-          <h2 className="text-5xl mb-6 font-semibold font-(family-name:--my-font) ...">
-            footer
-          </h2>
+          <div className="w-1/2 bg-gray-300 flex items-center justify-center">
+            <h2 className="text-5xl mb-6 font-semibold font-(family-name:--my-font) ...">
+              Offer
+            </h2>
+          </div>
         </div>
-    </section>
+    </section> */}
     </div>
   );
 };
