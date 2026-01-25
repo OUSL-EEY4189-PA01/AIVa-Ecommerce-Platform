@@ -18,9 +18,9 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/register',{ name, email, password });
+      const { data } = await axios.post('http://localhost:5000/api/auth/register', { name, email, password });
 
-      setSuccess(data.message); 
+      setSuccess(data.message);
 
       setTimeout(() => {
         navigate('/login');
@@ -58,69 +58,6 @@ const Register = () => {
             className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
             required
           />
-<<<<<<< HEAD
-
-          <input
-            type="text" 
-            name="houseNo"
-            placeholder="House No"
-            value={address.houseNo}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
-          <input
-            type="text"
-            name="street"
-            placeholder="Street/Lane"
-            value={address.street}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={address.city}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
-          <input
-            type="text"
-            name="district"
-            placeholder="District"
-            value={address.district}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
-          <input
-            type="number"
-            name="postalcode"
-            placeholder="Postal Code"
-            value={address.postalcode}
-            onChange={handleAddressChange}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-          />
-
-          <select class="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black">
-            <option>Sri Lanka</option>
-          </select>
-
-          <input
-            type="tel"
-            name="contactno"
-            placeholder="Contact Number"
-            value={contactno}
-            onChange={(e) => setContactno(e.target.value)}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required         
-          />
-
-=======
->>>>>>> 706e79c705e5c686a1ac74f88ad6943550a42a0b
           <input
             type="password"
             name="password"
@@ -141,9 +78,8 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full ${
-              loading ? "bg-purple-400" : "bg-purple-600 hover:bg-purple-700"
-            } text-white py-2 rounded transition`}
+            className={`w-full ${loading ? "bg-purple-400" : "bg-purple-600 hover:bg-purple-700"
+              } text-white py-2 rounded transition`}
           >
             {loading ? "Registering..." : "Register"}
           </button>
