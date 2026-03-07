@@ -1,0 +1,62 @@
+[
+    {
+        "category": "Return Policy",
+        "question": "What is your return policy?",
+        "answer": "We offer a 7-day return policy for all unopened and unused products. Products must be in their original packaging. To initiate a return, contact our customer service team with your order number."
+    },
+    {
+        "category": "Return Policy",
+        "question": "How do I get a refund?",
+        "answer": "Once we receive your returned item, we will inspect it and process your refund within 5-7 business days. The refund will be credited to your original payment method."
+    },
+    {
+        "category": "Return Policy",
+        "question": "Can I exchange a product?",
+        "answer": "Yes, you can exchange an unopened product for a different item within 30 days of purchase. Contact our customer service to arrange the exchange."
+    },
+    {
+        "category": "Shipping",
+        "question": "How long does shipping take?",
+        "answer": "Standard shipping takes 3-5 business days within Sri Lanka."
+    },
+    {
+        "category": "Shipping",
+        "question": "How much does shipping cost?",
+        "answer": "Standard shipping is free for orders over 5000 LKR. For orders under 5000 LKR, a flat shipping fee of 300 LKR applies."
+    },
+    {
+        "category": "Shipping",
+        "question": "Do you offer order tracking?",
+        "answer": "Yes, once your order is shipped, you will receive a tracking number via email. You can use this to track your package on our website or the courier's website."
+    },
+    {
+        "category": "Contact",
+        "question": "How can I contact customer service?",
+        "answer": "You can reach us via email at support@aiva.lk, call us at +94 81 234 5678. Our support hours are Monday to Saturday, 9 AM to 6 PM (IST)."
+    },
+    {
+        "category": "Contact",
+        "question": "Where are you located?",
+        "answer": "Our main office is located at 69 Kandy Road, Colombo 10, Sri Lanka."
+    },
+    {
+        "category": "Payment",
+        "question": "What payment methods do you accept?",
+        "answer": "We accept Visa, MasterCard, American Express, and cash on delivery (COD). Online payments are processed securely through our payment gateway."
+    },
+    {
+        "category": "Payment",
+        "question": "Is online payment secure?",
+        "answer": "Yes, all online payments are processed through a secure, PCI-compliant payment gateway with SSL encryption. Your card details are never stored on our servers."
+    },
+    {
+        "category": "General",
+        "question": "Do your products expire?",
+        "answer": "Yes, all skincare products have an expiry date printed on the packaging. We ensure that all products shipped have at least 12 months of shelf life remaining."
+    },
+    {
+        "category": "General",
+        "question": "Are your products authentic?",
+        "answer": "Yes, all our products are 100% authentic and sourced directly from authorized distributors. We guarantee the authenticity of every product we sell."
+    }
+]
