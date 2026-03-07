@@ -1,89 +1,109 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setSuccess('');
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
+
     setLoading(true);
-
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/register', { name, email, password });
-
-      setSuccess(data.message);
-
-      setTimeout(() => {
-        navigate('/login');
-      }, 1000);
-
-    } catch (err) {
-      setError(err.response?.data?.message || err.message || "Registration failed, Try again");
+      const result = await register(name, email, password);
+      if (result.success) {
+        navigate('/');
+      } else {
+        setError(result.message || 'Registration failed');
+      }
+    } catch {
+      setError('Registration failed');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] bg-white py-12">
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow p-8">
-        <h1 className="text-2xl font-bold text-purple-600 mb-6 text-center">
-          REGISTER
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-6 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-600 bg-white text-black"
-            required
-          />
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-sm">
+        <h1 className="text-3xl font-black tracking-tighter text-center mb-8">Create Account</h1>
 
-          {error && (
-            <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
-          )}
-          {success && (
-            <p className="text-green-500 text-sm mb-4 text-center">{success}</p>
-          )}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-800 text-sm">{error}</div>
+        )}
 
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm text-black/50 mb-2">Full Name</label>
+            <input
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-3 border border-black/20 focus:border-black focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-black/50 mb-2">Email</label>
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 border border-black/20 focus:border-black focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-black/50 mb-2">Password</label>
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 border border-black/20 focus:border-black focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-black/50 mb-2">Confirm Password</label>
+            <input
+              type="password"
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-4 py-3 border border-black/20 focus:border-black focus:outline-none"
+            />
+          </div>
           <button
             type="submit"
             disabled={loading}
-            className={`w-full ${loading ? "bg-purple-400" : "bg-purple-600 hover:bg-purple-700"
-              } text-white py-2 rounded transition`}
+            className="w-full py-3 bg-black text-white font-medium hover:bg-black/80 disabled:opacity-50"
           >
-            {loading ? "Registering..." : "Register"}
+            {loading ? 'Creating...' : 'Create Account'}
           </button>
         </form>
+
+        <p className="text-center mt-8 text-sm text-black/50">
+          Already have an account?{' '}
+          <Link to="/login" className="text-blue-600 hover:underline">Sign In</Link>
+        </p>
       </div>
     </div>
   );
